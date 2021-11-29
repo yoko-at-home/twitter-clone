@@ -27,6 +27,17 @@ const App: React.FC = () => {
       unSub();
     };
   }, [dispatch]);
+  return (
+    <>
+      {user.uid ? (
+        <div className={styles.app}>
+          <Feed />
+        </div>
+      ) : (
+        <SignInSide />
+      )}
+    </>
+  );
 };
 
 export default App;
