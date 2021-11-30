@@ -73,6 +73,9 @@ const useStyles = makeStyles((theme) => ({
 
 export const SignInSide: React.FC = () => {
   const classes = useStyles();
+  const signInGoogle = async () => {
+    await auth.signInWithPopup(provider).catch((err) => alert(err.message));
+  };
 
   return (
     <Grid container component='main' className={classes.root}>
@@ -83,10 +86,10 @@ export const SignInSide: React.FC = () => {
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component='h1' variant='h5'>
-            Sign in
-          </Typography>
           <form className={classes.form} noValidate>
+            <Typography component='h1' variant='h5'>
+              Sign in
+            </Typography>
             <TextField
               variant='outlined'
               margin='normal'
@@ -117,6 +120,15 @@ export const SignInSide: React.FC = () => {
               className={classes.submit}
             >
               Sign In
+            </Button>
+            <Button
+              fullWidth
+              variant='contained'
+              color='primary'
+              className={classes.submit}
+              onClick={signInGoogle}
+            >
+              Sign in with Google
             </Button>
             {/* <Box mt={5}>
               <Copyright />
